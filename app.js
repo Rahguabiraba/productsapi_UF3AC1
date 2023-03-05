@@ -1,6 +1,7 @@
 const express = require('express')
 const products_routes = require('./routes/products.js')
 const PORT = process.env.PORT || 5000;
+const slug = require('slugify');
 
 //Server instantiation
 const app = express()
@@ -16,7 +17,9 @@ app.use('/', products_routes)
 
 //Server startup
 app.listen(PORT, () => {
-    console.log(`server is listening on port ${PORT}`)
+    console.log(slug(`server is listening on port ${PORT}`, {
+        replacement: '*'
+    }))
 })
 
 
